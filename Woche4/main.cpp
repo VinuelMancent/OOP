@@ -30,19 +30,37 @@ namespace hfu{
     class Movie{
     private:
         const std::string title;
-        const std::string director;
+        const hfu::Person director;
         const int durationInMinutes;
+        const int *scores;
+        const int scoreCount;
+        static int* copyArray(const int* originalArray, int length){
+            int* newArray = new int[length];
+            for(int i = 0; i < length; i++){
+                newArray[i] = originalArray[i];
+            }
+            return newArray;
+        }
     public:
-        Movie(const std::string& title, const std::string& director, const int& duration) :
-            title(title), director(director), durationInMinutes(duration){}
+        Movie(const std::string& title, const hfu::Person& director, const int& duration) :
+                Movie(title, director, duration, new int[0], 0){}
+        Movie(const std::string& title, const hfu::Person& director, const int& duration, const int* scores, const int length) :
+                title(title), director(director), durationInMinutes(duration), scores(copyArray(scores, length)), scoreCount(length){}
         std::string getTitle(){
             return this->title;
         }
-        std::string getDirector(){
+        hfu::Person getDirector(){
             return this->director;
         }
         int getDuration(){
             return this->durationInMinutes;
+        }
+        int getScoreCount(){
+            return this->scoreCount;
+        }
+        int getScore(int position){
+            int score = this->scores[position];
+            return score;
         }
     };
 }
@@ -59,69 +77,53 @@ void test_person(){
 void test_movie(){
 
     std::string title = "Die nackte kanone";
-    std::string director = "david zucker";
+    hfu::Person director("David", "Zucker");
     int duration = 137;
     hfu::Movie movie1(title, director, duration);
     assert(movie1.getTitle() == title);
-    assert(movie1.getDirector() == director);
+    assert(movie1.getDirector().compare(director) == 0);
     assert(movie1.getDuration() == duration);
 }
-void swap(hfu::Person* personen, int pos1, int pos2){
-    std::cout << "Swapping..." << personen << " and " << personen+pos2 << std::endl;
-    hfu::Person& toSafe = personen[pos1];
-    personen[pos1] = personen[pos2];
-    personen[pos2] = toSafe;
-}
-void swap2(hfu::Person* personen, int pos1, int pos2){
 
+void test_movie2(){
+    hfu::Person director("Donald", "Duck");
+    int scores[]={4,7,1,1};
+    hfu::Movie scored_movie("Modern Times", director,90, scores,4);
+    scores[3]=23;
+    assert(scored_movie.getScoreCount()==4);
+    assert(scored_movie.getScore(0)==4);
+    assert(scored_movie.getScore(1)==7);
+    assert(scored_movie.getScore(2)==1);
+    assert(scored_movie.getScore(3)==1);
 }
+
 void sort(hfu::Person* personen, int size){
-    hfu::Person* personenSorted;
-    /*
     for(int i = 0; i < size-1; i++){
-        if(personen[i].compare(personen[i+1]) > 0){
-            std::cout << "Going to swap..." << std::endl;
-            swap(personen, i, i+1);
-            std::cout << "Swapped " << i << personen[i].getFirstname() <<  "and" << i+1 << personen[i+1].getFirstname() << std::endl;
+        if(personen[i].compare(personen[i+1]) < 0){
+            hfu::Person tempPerson = personen[i];
+            personen[i] = personen[i+1];
+            personen[i+1] = tempPerson;
         }
-    }*/
-    hfu::Person* end = personen + size;
-    int counter = 0;
-    for (hfu::Person *p = personen; p != end; ++p) {
-        if(counter+1 < size)
-            counter++;
-        std::cout << counter << std::endl;
-        std::cout << p->getFirstname() << std::endl;
-        hfu::Person nextPerson = *(personen+counter);
-        std::cout << "Current person: " << p->getFirstname() <<  std::endl << "Next Person:" << nextPerson.getFirstname() << std::endl;
-        if(p->compare(nextPerson) < 0){
-            swap(personen, counter -1, counter);
-            std::cout << "Have to swap " << p->getFirstname() << " and " << nextPerson.getFirstname() << std::endl;
-        }
-
     }
 }
 
 void test_sort(){
-    hfu::Person p3("Donald", "Duck");
-    hfu::Person p2("Daisy", "Duck");
     hfu::Person p1("Micky", "Maus");
+    hfu::Person p2("Daisy", "Duck");
+    hfu::Person p3("Donald", "Duck");
     hfu::Person p4("Dagobert", "Duck");
     hfu::Person* personen = new hfu::Person[4]{p1, p2, p3, p4};
-    personen[0] = p1;
-    personen[1] = p2;
-    personen[2] = p3;
-    personen[3] = p4;
     sort(personen, 4);
-    assert(personen[0].compare(p2) == 0);
-    assert(personen[1].compare(p2) == 0);
-    assert(personen[2].compare(p3) == 0);
-    assert(personen[3].compare(p1) == 0);
+    assert(personen[0].compare(p1) == 0);
+    assert(personen[1].compare(p3) == 0);
+    assert(personen[2].compare(p2) == 0);
+    assert(personen[3].compare(p4) == 0);
 }
 int main() {
     std::cout << "Started..." << std::endl;
     test_person();
     test_movie();
+    test_movie2();
     test_sort();
     std::cout << "Finished..." << std::endl;
     return 0;
