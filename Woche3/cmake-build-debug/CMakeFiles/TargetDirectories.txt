@@ -1,0 +1,3 @@
+C:/Users/Vincent/Documents/Uni/SS22/ObjektorientiertesProgrammieren/Woche3/cmake-build-debug/CMakeFiles/Woche3.dir
+C:/Users/Vincent/Documents/Uni/SS22/ObjektorientiertesProgrammieren/Woche3/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Vincent/Documents/Uni/SS22/ObjektorientiertesProgrammieren/Woche3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
