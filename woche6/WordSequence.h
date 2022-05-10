@@ -7,9 +7,16 @@
 
 
 class WordSequence {
-
+private:
+    std::string* words;
+    int size;
+    std::string* copyArray(const std::string* originalArray, int length);
 public:
     WordSequence(std::string* words, int size);
+    WordSequence();
+    WordSequence(const WordSequence& other);
+    ~WordSequence();
+    std::string& GetWordAtPosition(int position);
 };
 
 

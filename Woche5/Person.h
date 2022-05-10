@@ -16,7 +16,7 @@ namespace hfu{
         Person(const Person& other);
         std::string getFirstname();
         std::string getLastname();
-        std::string setFirstName();
+        void setFirstName(std::string firstName);
         int compare(const Person& other);
     };
 }

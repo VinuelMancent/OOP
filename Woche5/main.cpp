@@ -1,88 +1,12 @@
+//
+// Created by Vincent on 27.04.2022.
+//
+
 #include <iostream>
 #include <cassert>
+#include "Movie.h"
+#include "Person.h"
 
-namespace hfu{
-    class Person{
-    private:
-        std::string firstName;
-        std::string lastName;
-
-    public:
-        Person(const std::string& firstName, const std::string& lastName): firstName(firstName), lastName(lastName){}
-        Person(const Person& other): Person(other.firstName, other.lastName){};
-
-        std::string getFirstname(){
-            return this->firstName;
-        }
-        std::string getLastname(){
-            return this->lastName;
-        }
-        void setFirstName(std::string firstName){
-            this->firstName = firstName;
-        }
-        int compare(const Person& other){
-            if(this->lastName < other.lastName)
-                return -1;
-            else if(this->lastName > other.lastName)
-                return 1;
-            else if(this->firstName < other.firstName)
-                return -1;
-            else if(this->firstName > other.firstName)
-                return 1;
-            return 0;
-        }
-    };
-    class Movie{
-    private:
-        const std::string title;
-        const hfu::Person director;
-        const int durationInMinutes;
-        int *scores;
-        const int scoreCount;
-        static int* copyArray(const int* originalArray, int length){
-            int* newArray = new int[length];
-            for(int i = 0; i < length; i++){
-                newArray[i] = originalArray[i];
-            }
-            return newArray;
-        }
-    public:
-        Movie(const std::string& title, const hfu::Person& director, const int& duration) :
-                Movie(title, director, duration, new int[0], 0){}
-        Movie(const std::string& title, const hfu::Person& director, const int& duration, const int* scores, const int length) :
-                title(title), director(director), durationInMinutes(duration), scores(copyArray(scores, length)), scoreCount(length){}
-        //Muss noch angepasst werden, so dass ein neuer array erstellt wird für die scores
-        Movie(const Movie& other): Movie(other.title, other.director, other.durationInMinutes, copyArray(other.scores, other.scoreCount), other.scoreCount){}
-        ~Movie(){
-            delete scores;
-        }
-        std::string getTitle(){
-            return this->title;
-        }
-        hfu::Person getDirector(){
-            return this->director;
-        }
-        int getDuration(){
-            return this->durationInMinutes;
-        }
-        int getScoreCount(){
-            return this->scoreCount;
-        }
-        int getScore(int position){
-            int score = this->scores[position];
-            return score;
-        }
-        void setScore(int position, int score){
-            if(score<0){
-                throw std::invalid_argument("score can't be negative!");
-            }
-            if(position >= scoreCount || position < 0){
-                throw std::invalid_argument("position has to be between 0 and " + scoreCount -1);
-            }
-            this->scores[position] = score;
-        }
-    };
-}
 void test_person(){
     hfu::Person person("Donald", "Duck");
     assert(person.getFirstname()=="Donald");
@@ -95,10 +19,10 @@ void test_person(){
 }
 
 void test_person2(){
-     hfu::Person person1("Vincent", "Mattes");
-     hfu::Person personCopy = person1;
-     personCopy.setFirstName("Donald");
-     assert(person1.getFirstname() == "Vincent");
+    hfu::Person person1("Vincent", "Mattes");
+    hfu::Person personCopy = person1;
+    personCopy.setFirstName("Donald");
+    assert(person1.getFirstname() == "Vincent");
 }
 
 void test_movie(){
