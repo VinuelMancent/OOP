@@ -20,10 +20,9 @@ hfu::Movie::Movie(const std::string& title, const hfu::Person& director, const i
         Movie(title, director, duration, new int[0], 0){}
 hfu::Movie::Movie(const std::string& title, const hfu::Person& director, const int& duration, const int* scores, const int& length) :
         title(title), director(director), durationInMinutes(duration), scores(copyArray(scores, length)), scoreCount(length){}
-//Muss noch angepasst werden, so dass ein neuer array erstellt wird für die scores
 hfu::Movie::Movie(const Movie& other): Movie(other.title, other.director, other.durationInMinutes, copyArray(other.scores, other.scoreCount), other.scoreCount){}
 hfu::Movie::~Movie(){
-    delete scores;
+    delete[] scores;
 }
 std::string hfu::Movie::getTitle(){
     return this->title;
