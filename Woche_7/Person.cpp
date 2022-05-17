@@ -17,23 +17,14 @@ void hfu::Person::setFirstName(std::string firstName){
     this->firstName = firstName;
 }
 int hfu::Person::compare(const Person& other){
-    if(this->lastName < other.lastName){
-        std::cout << other.firstName << " is bigger than " << this->firstName << std::endl;
+    if(this->lastName < other.lastName)
         return -1;
-    }
-    else if(this->lastName > other.lastName){
-        std::cout << other.firstName << " is smaller than " << this->firstName << std::endl;
+    else if(this->lastName > other.lastName)
         return 1;
-    }
-    else if(this->firstName < other.firstName) {
-        std::cout << other.firstName << " is bigger than " << this->firstName << std::endl;
+    else if(this->firstName < other.firstName)
         return -1;
-    }
-    else if(this->firstName > other.firstName){
-        std::cout << other.firstName << " is smaller than " << this->firstName << std::endl;
+    else if(this->firstName > other.firstName)
         return 1;
-    }
-    std::cout << other.firstName << " equals " << this->firstName << std::endl;
     return 0;
 }
 

@@ -2,8 +2,8 @@
 // Created by Vincent on 03.05.2022.
 //
 
-#ifndef WOCHE6_WORDSEQUENCE_H
-#define WOCHE6_WORDSEQUENCE_H
+#ifndef WOCHE7_WORDSEQUENCE_H
+#define WOCHE7_WORDSEQUENCE_H
 
 
 class WordSequence {
@@ -27,4 +27,4 @@ public:
 };
 
 
-#endif //WOCHE6_WORDSEQUENCE_H
+#endif //WOCHE7_WORDSEQUENCE_H

@@ -83,12 +83,12 @@ void test_movie_setScore(){
     }
 }
 void sort(hfu::Person* personen, int size){
-    for(int i = 0; i < size-1; i++){
-        for(int j = 0; j < size - i; j++){
-            if(personen[i].compare(personen[i+1]) > 0) {
+    for(int i = 0; i < size; i++){
+        for(int j = i; j < size; j++){
+            if(personen[i].compare(personen[j]) > 0) {
                 hfu::Person tempPerson = personen[j];
-                personen[j] = personen[j + 1];
-                personen[j + 1] = tempPerson;
+                personen[j] = personen[i];
+                personen[i] = tempPerson;
             }
         }
     }
@@ -98,6 +98,29 @@ void printArray(hfu::Person* personen, int size){
         std::cout << personen[i].getFirstname() << std::endl;
     }
 }
+hfu::Person* createArray() {
+    hfu::Person* result = new hfu::Person[4];
+    result[0]=hfu::Person("Minnie", "Maus");
+    result[1]=hfu::Person("Daisy", "Duck");
+    result[2]=hfu::Person("Donald", "Duck");
+    result[3]=hfu::Person("Micky", "Maus");
+    return result;
+}
+
+void testTemplateSort(){
+    int size = 4;
+    hfu::Person* persons = createArray();
+    //printArray(persons, 4);
+    sort(persons, size);
+    printArray(persons, 4);
+    assert((persons[0]).getFirstname() == "Daisy");
+    assert((persons[1]).getFirstname() == "Donald");
+    assert((persons[2]).getFirstname() == "Micky");
+    assert((persons[3]).getFirstname() == "Minnie");
+    delete[] persons;
+}
+
+
 void test_sort(){
     hfu::Person p1("Micky", "Maus");
     hfu::Person p2("Daisy", "Duck");
@@ -113,13 +136,7 @@ void test_sort(){
 }
 int main() {
     std::cout << "Started..." << std::endl;
-    test_person();
-    test_person2();
-    test_movie();
-    test_movie2();
-    test_movie3();
-    test_movie_setScore();
-    test_sort();
+    testTemplateSort();
     std::cout << "Finished..." << std::endl;
     return 0;
 }

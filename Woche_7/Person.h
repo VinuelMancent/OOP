@@ -2,8 +2,8 @@
 // Created by Vincent on 21.04.2022.
 //
 
-#ifndef WOCHE5_PERSON_H
-#define WOCHE5_PERSON_H
+#ifndef WOCHE7_PERSON_H
+#define WOCHE7_PERSON_H
 #include <string>
 namespace hfu{
     class Person{
@@ -21,4 +21,4 @@ namespace hfu{
         int compare(const Person& other);
     };
 }
-#endif //WOCHE5_PERSON_H
+#endif //WOCHE7_PERSON_H
