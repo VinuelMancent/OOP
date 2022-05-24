@@ -12,7 +12,6 @@ private:
     std::string* words;
     int size;
     std::string* copyArray(const std::string* originalArray, int length);
-    int copySize(int size);
 public:
     WordSequence(std::string* words, int size);
     WordSequence();

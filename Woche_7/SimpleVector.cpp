@@ -1,13 +1,13 @@
 //
-// Created by Vincent on 03.05.2022.
+// Created by Vincent on 24.05.2022.
 //
 
-
 #include <iostream>
-#include "WordSequence.h"
+#include "SimpleVector.h"
 
-WordSequence::WordSequence(std::string* words,int size): words(copyArray(words, size)), size(size){}
-WordSequence::WordSequence() : WordSequence(new std::string[0], 0){}
+
+SimpleVector::SimpleVector(T* words,int size): words(copyArray(words, size)), size(size){}
+SimpleVector::SimpleVector() : WordSequence(new std::string[0], 0){}
 //Konstruktorverkettung
 WordSequence::WordSequence(const WordSequence& other) : WordSequence(words, size){};
 WordSequence::~WordSequence(){
@@ -57,5 +57,3 @@ std::string WordSequence::operator[](int index) const{
     }
     return words[index];
 }
-
-
