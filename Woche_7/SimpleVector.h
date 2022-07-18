@@ -30,19 +30,11 @@ namespace hfu {
         SimpleVector() : SimpleVector(new T[0], 0) {}
 
 //Konstruktorverkettung
-        SimpleVector(const SimpleVector &other) : SimpleVector(content, size) {};
+        SimpleVector(const SimpleVector &other) : SimpleVector(other.content, other.size) {};
 
         ~SimpleVector() {
             delete[] content;
         }
-
-        T &GetContentAtPosition(int position) {
-            if (position >= size || position < 0) {
-                throw std::invalid_argument("position out of array range");
-            }
-            return content[position];
-        }
-
         int getSize() {
             return this->size;
         }

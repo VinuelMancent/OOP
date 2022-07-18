@@ -1,0 +1,17 @@
+# ninja log v5
+9	598	6739038431236806	CMakeFiles/woche6.dir/main.cpp.obj	b5c30e4ca1583fc9
+467	655	6739038849763666	woche6.exe	9edd057cea1f390d
+5	861	6744173308765294	build.ninja	a17aeab5f84f1eac
+3	466	6739038847954357	CMakeFiles/woche6.dir/WordSequence.cpp.obj	1b496cbe9179915d
+7	1232	6744174739013607	CMakeFiles/woche6.dir/WordSequence.cpp.obj	1b496cbe9179915d
+1233	1912	6744174745777613	woche6.exe	9edd057cea1f390d
+5	1058	6744175098764722	CMakeFiles/woche6.dir/main.cpp.obj	b5c30e4ca1583fc9
+1059	1385	6744175101936229	woche6.exe	9edd057cea1f390d
+6	1072	6744175303456974	CMakeFiles/woche6.dir/main.cpp.obj	b5c30e4ca1583fc9
+1074	1394	6744175306671925	woche6.exe	9edd057cea1f390d
+29	844	6744175865962134	CMakeFiles/woche6.dir/WordSequence.cpp.obj	1b496cbe9179915d
+5	855	6744175866042029	CMakeFiles/woche6.dir/main.cpp.obj	b5c30e4ca1583fc9
+855	1135	6744175868838283	woche6.exe	9edd057cea1f390d
+4	801	6744183444931647	CMakeFiles/woche6.dir/WordSequence.cpp.obj	1b496cbe9179915d
+54	811	6744183444931647	CMakeFiles/woche6.dir/main.cpp.obj	b5c30e4ca1583fc9
+811	1213	6744183448941350	woche6.exe	9edd057cea1f390d
